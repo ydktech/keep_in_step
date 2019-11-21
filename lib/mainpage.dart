@@ -269,7 +269,7 @@ setState(() {
 
       if(expiredatebungee-today< 10 &&  expiredatebungee-today > 0){
         alerttrigger2 = true;
-        notifyexpirebungee = '[번지플라이]';
+        notifyexpirebungee = '[번지요가]';
       }
       else{notifyexpirebungee = "";
       alerttrigger2 = true;}
@@ -749,7 +749,7 @@ namedata(), distinger()
                         if(lengthofdata != 0){
                        dr.updateData({lengthofdata.toString():{"subtitle": tcontroller.text, "reply": "", "title": "작성된 내용은 관리자만 볼 수 있습니다."}});}
                         else{
-    dr.setData({lengthofdata.toString():{"subtitle": tcontroller.text, "reply": "", "title": "작성된 내용은 관리자만 볼 수 있습니다."}});
+                          dr.setData({lengthofdata.toString():{"subtitle": tcontroller.text, "reply": "", "title": "작성된 내용은 관리자만 볼 수 있습니다."}});
                           lengthofdata = 1;
                         }
                         Navigator.pop(context);
@@ -788,7 +788,7 @@ namedata(), distinger()
                           builder: (BuildContext context) {
                             return AlertDialog(
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
-                              title: Text('번지플라이',textAlign: TextAlign.center,),
+                              title: Text('번지요가',textAlign: TextAlign.center,),
                               content: const Text('\n예약하시겠습니까?',textAlign: TextAlign.center,),
                               actions: <Widget>[
                                 FlatButton(
@@ -908,7 +908,7 @@ namedata(), distinger()
                                                   .updateData({'availnums': availnums});
 
                                               Fluttertoast.showToast(
-                                                  msg:"번지플라이 " + bungeetime.toString() + "에 예약되었습니다.",
+                                                  msg:"번지요가 " + bungeetime.toString() + "에 예약되었습니다.",
                                                   toastLength: Toast.LENGTH_SHORT,
                                                   gravity: ToastGravity.BOTTOM,
                                                   timeInSecForIos: 1,
@@ -1064,7 +1064,8 @@ namedata(), distinger()
                                       setState(() {
                                         expiredate = ds['expiredate'];
                                       });
-
+print(yogadate);
+print(expiredate);
                                       if(yogadate<=expiredate)
                                       {
                                         Firestore.instance.collection('yoga').document(dateselected).get().then((d)  {
@@ -1122,6 +1123,7 @@ namedata(), distinger()
                                             }
                                             }
                                             else{
+                                              print('a');
                                               Fluttertoast.showToast(
                                                   msg: "예약할 수 없습니다.",
                                                   toastLength: Toast.LENGTH_SHORT,
@@ -1136,6 +1138,7 @@ namedata(), distinger()
 
                                           else{
 
+                                            print('b');
                                             Fluttertoast.showToast(
                                                 msg: "예약할 수 없습니다.",
                                                 toastLength: Toast.LENGTH_SHORT,
@@ -1149,6 +1152,8 @@ namedata(), distinger()
 
                                         }  );}
                                       else{
+
+                                        print('c');
                                         Fluttertoast.showToast(
                                             msg: "예약할 수 없습니다.",
                                             toastLength: Toast.LENGTH_SHORT,
@@ -1322,6 +1327,7 @@ namedata(), distinger()
                                               }
                                             }
                                             else {
+                                              print('d');
                                               Fluttertoast.showToast(
                                                   msg: "예약할 수 없습니다.",
                                                   toastLength: Toast.LENGTH_SHORT,
@@ -1335,6 +1341,7 @@ namedata(), distinger()
                                           }
 
                                           else {
+                                            print('e');
                                             Fluttertoast.showToast(
                                                 msg: "예약할 수 없습니다.",
                                                 toastLength: Toast.LENGTH_SHORT,
@@ -1348,6 +1355,7 @@ namedata(), distinger()
                                         });
                                       }
                                       else {
+                                        print('f');
                                         Fluttertoast.showToast(
                                             msg: "예약할 수 없습니다.",
                                             toastLength: Toast.LENGTH_SHORT,
@@ -1390,9 +1398,9 @@ namedata(), distinger()
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
-                              Text('이번주 플라잉요가 예약정보',
+                              Text('플라잉요가 스케줄',
                                 style: TextStyle(
-                                    fontSize: 20, fontFamily: 'yangjin'
+                                    fontSize: 20,
 
                                 ),
                                 textAlign: TextAlign.center,
@@ -1429,9 +1437,9 @@ namedata(), distinger()
                             mainAxisSize: MainAxisSize.max,
                             children: <Widget>[
                               Padding(padding: EdgeInsets.all(10),),
-                              Text('이번주 번지플라이 예약정보',
+                              Text('번지요가 스케줄',
                                 style: TextStyle(
-                                    fontSize: 20, fontFamily: 'yangjin'
+                                    fontSize: 20,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -1545,9 +1553,9 @@ namedata(), distinger()
                         mainAxisSize: MainAxisSize.max,
                         children: <Widget>[
                           Padding(padding: EdgeInsets.all(10),),
-                          Text('이번주 번지플라이 예약정보',
+                          Text('이번주 번지요가 예약정보',
                             style: TextStyle(
-                                fontSize: 20, fontFamily: 'yangjin'
+                                fontSize: 20,
                             ),
                             textAlign: TextAlign.center,
                           ),
@@ -1683,15 +1691,14 @@ Widget reservationinfo(){
         switch (snapshot.connectionState) {
 
           default:
-            reservinfo = "오전타임 :\n";
+            reservinfo = "오전 : \n";
             snapshot.data.documents.forEach((DocumentSnapshot ds){
               if(ds.data.containsKey(widget.user.uid)){
                   reservinfo = reservinfo + thisweek(ds.documentID, textofdateyoga1)  + "\n";
               }
-              else{reservinfo = "오전타임 : \n";}
               });
 
-       return Text(""+reservinfo, style: TextStyle(fontFamily: 'yangjin'),);
+       return Text(""+reservinfo, style: TextStyle(),);
 
 
 
@@ -1714,14 +1721,13 @@ Widget reservationinfo(){
           switch (snapshot.connectionState) {
 
             default:
-              reservinfo2 = "오후타임 :\n";
+              reservinfo2 = "오후 :\n";
               snapshot.data.documents.forEach((DocumentSnapshot ds){
                 if(ds.data.containsKey(widget.user.uid)){
                   reservinfo2 = reservinfo2 + thisweek(ds.documentID, textofdateyoga2) + " \n";
                 }
-                else{reservinfo2 = "";}
               });
-              return Text("오후타임 : \n"+reservinfo2, style: TextStyle(fontFamily: 'yangjin'));
+              return Text(""+reservinfo2, style: TextStyle(fontFamily: 'yangjin'));
 
 
 
@@ -1750,9 +1756,8 @@ Widget reservationinfo(){
                   reservinfobungee = reservinfobungee + thisweek(ds.documentID, textofdate) + "\n";
 
                 }
-                else{reservinfobungee = "";}
               });
-              return Text(reservinfobungee, style: TextStyle(fontFamily: 'yangjin'));
+              return Text(reservinfobungee, style: TextStyle());
 
 
 
@@ -1907,8 +1912,8 @@ Widget cardviewer(int index){
             });
 
             if(availnums != null && expiredatebungee >= 0){
-              return new Text("번지플라이 : " + availnums.toString()+"/"+maximumbungee.toString() +"("+ expiredatebungee.toString() + "일)" ,style: TextStyle(fontFamily: 'nanumgothic'),);}
-            else{return new Text('번지플라이 정보 없음' ,style: TextStyle(fontFamily: 'nanumgothic'),);}
+              return new Text("번지요가 : " + availnums.toString()+"/"+maximumbungee.toString() +"("+ expiredatebungee.toString() + "일)" ,style: TextStyle(fontFamily: 'nanumgothic'),);}
+            else{return new Text('번지요가 정보 없음' ,style: TextStyle(fontFamily: 'nanumgothic'),);}
 
 
         }
@@ -1979,8 +1984,6 @@ if(noshow){
                   (
                     color: colorswitch(whichcoloryoga),
                     child: ListTile(
-
-                      leading: Icon(Icons.flight_takeoff),
                       title: Text("플라잉요가 오전 "+yogatime+"\n예약 회원 : " + resyoga +"/"+limityoga.toString(),textAlign: TextAlign.center,),),),),);
             }
             else{
@@ -2052,7 +2055,6 @@ else{return Container();}
                   color: colorswitch(whichcoloryoga2),
                   child: ListTile(
 
-                    leading: Icon(Icons.flight_takeoff),
                     title: Text("플라잉요가 오후 "+yogatime+"\n예약 회원 : " + resyoga2 +"/"+limityoga2.toString(),textAlign: TextAlign.center,),),),),);
             }
             else{return Text('');}
@@ -2117,8 +2119,7 @@ else{return Container();}
                 child: Card(child: Container(
                   color: colorswitch(whichcolor),
                   child: ListTile(
-                  leading: Icon(Icons.accessibility_new),
-                  title: Text("번지플라이 "+bungeetime+"\n예약회원수 : " + res + "/"+limitbungee.toString(),textAlign: TextAlign.center,),),)),);
+                  title: Text("번지요가 "+bungeetime+"\n예약회원수 : " + res + "/"+limitbungee.toString(),textAlign: TextAlign.center,),),)),);
             }
             else{return Text('');}
 
