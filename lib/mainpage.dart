@@ -1499,7 +1499,9 @@ print(expiredate);
             ),
               ]
           ))),
-          new Scaffold(body: Container(
+          new Scaffold(
+              /*
+              body: Container(
             alignment: Alignment.topCenter,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1574,7 +1576,10 @@ print(expiredate);
                 ),
               ],
             ),
-          )),
+          )
+
+          */
+          ),
           new Scaffold(body: Container(
             alignment: Alignment.topCenter,
             child: Column(
@@ -1727,7 +1732,7 @@ Widget reservationinfo(){
                   reservinfo2 = reservinfo2 + thisweek(ds.documentID, textofdateyoga2) + " \n";
                 }
               });
-              return Text(""+reservinfo2, style: TextStyle(fontFamily: 'yangjin'));
+              return Text(""+reservinfo2, style: TextStyle());
 
 
 
