@@ -1,16 +1,6 @@
 # keep_in_step
 
-KeepInStep Management Application.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+KeepInStep Management Application.  
+This App is sample of flutter firestore reservation.  
+이 앱은 플러터와 파이어스토어로 제작한 예약어플입니다. 혼자 만들었습니다. 고려할 게 많더군요.  
+このアプリは flutter と firestore で制作した予約アプリです。一人で全部作ったアプリです。
